@@ -16,16 +16,18 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+            <a name="top"></a>
             <h1>AniPad</h1>
             <h4>By Yassir Douslimi</h4>
 
 
-            <form action="#" method="POST">
-                <input id="search" onchange="alert('Search functionality is still in development 💔')" type="search" placeholder="Search by title..." autofocus required />    
+            <form onsubmit="return setAction(this)" method="POST">
+                <input id="search" type="search" placeholder="Search by title..." autofocus required />    
               </form>
 
             <ul id="list"></ul>
+
+            <a href="#top"><button class="unhide" style="margin-bottom: 2rem;">Back to the Top</button></a>
 
         <script src="./script.js" async defer></script>
     </body>

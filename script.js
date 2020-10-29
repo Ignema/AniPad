@@ -1,8 +1,13 @@
 
-// https://www.reddit.com/r/AnimeThemes/search?q=fairy&restrict_sr=on&sort=relevance&t=all
+ async function fetchVideos(url) {
 
- async function getVideos() {
-    let response = await fetch("https://www.reddit.com/r/AnimeThemes.json?limit=100", {
+    if(!url){
+
+        url = "https://www.reddit.com/r/AnimeThemes.json?limit=100";
+
+    }
+    
+    let response = await fetch( url, {
         headers: {
             "User-Agent"   : "tester"
         }
@@ -16,66 +21,85 @@
     }
 }
 
-getVideos().then((json)=>{
+function displayVideos(url){
+    fetchVideos(url).then((json)=>{
 
-    const list = document.getElementById("list");
+        const list = document.getElementById("list");
 
-    json.data.children.forEach(video => {
-        if(video.data.link_flair_text !== "Added to wiki") {
-            return;
-        }
+        json.data.children.forEach(video => {
+            if(video.data.link_flair_text !== "Added to wiki" || video.data.selftext !== "") {
+                return;
+            }
 
-        let title = document.createElement("h2");
-        title.innerHTML = video.data.title;
+            let title = document.createElement("h2");
+            title.innerHTML = video.data.title;
 
-        let vid = document.createElement("video");
-        vid.style.outline= "none";
-        vid.style.display="none";
-        vid.className="video";
-        vid.controls=true;
+            let vid = document.createElement("video");
+            vid.style.outline= "none";
+            vid.style.display="none";
+            vid.className="video";
+            vid.controls=true;
 
-        let src = document.createElement("source");
-        
-
-        let btn = document.createElement("button");
-        btn.className = "play";
-        btn.innerHTML = "Play";
-
-        btn.addEventListener("click", ()=>{
+            let src = document.createElement("source");
             
-            if(vid.style.display=="none"){
-                vid.style.display="block";
-                btn.className="hide";
-                btn.innerHTML = "Hide";
-                if (vid.hidden==true) {
-                    vid.hidden=false;
-                }else{
-                    src.src= video.data.url;
-                    vid.load();
-                    vid.play();
+
+            let btn = document.createElement("button");
+            btn.className = "play";
+            btn.innerHTML = "Play";
+
+            btn.addEventListener("click", ()=>{
+                
+                if(vid.style.display=="none"){
+                    vid.style.display="block";
+                    btn.className="hide";
+                    btn.innerHTML = "Hide";
+                    if (vid.hidden==true) {
+                        vid.hidden=false;
+                    }else{
+                        src.src= video.data.url;
+                        vid.load();
+                        vid.play().catch((e)=>{console.log(e)});
+                    }
                 }
-            }
-            else{
-                vid.style.display="none";
-                btn.className="unhide";
-                btn.innerHTML = "Unhide";
-                vid.hidden=true;
-            }
+                else{
+                    vid.style.display="none";
+                    btn.className="unhide";
+                    btn.innerHTML = "Unhide";
+                    vid.hidden=true;
+                }
+            });
+
+            let bar = document.createElement("div");
+            bar.className="bar";
+
+            let item = document.createElement("li");
+
+            bar.appendChild(title);
+            bar.appendChild(btn);
+            item.appendChild(bar);
+
+            vid.appendChild(src);
+            item.appendChild(vid);
+
+            list.appendChild(item);
         });
 
-        let bar = document.createElement("div");
-        bar.className="bar";
-
-        let item = document.createElement("li");
-
-        bar.appendChild(title);
-        bar.appendChild(btn);
-        item.appendChild(bar);
-
-        vid.appendChild(src);
-        item.appendChild(vid);
-
-        list.appendChild(item);
+    }).catch((e)=>{console.log(e)}).finally(()=>{
+        if(!list.firstChild){
+            const msg = document.createElement("h3");
+            msg.innerHTML = "No Videos Found";
+            list.appendChild(msg);
+        }
     });
+}
 
-}).catch((e)=>{console.log(e)});
+displayVideos();
+
+function setAction(form) {
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+    const search = document.getElementById("search");
+    displayVideos(`https://www.reddit.com/r/AnimeThemes/search.json?q=${search.value.replaceAll(" ", "+")}&restrict_sr=on&sort=relevance&t=all`);
+    return false;
+  }
