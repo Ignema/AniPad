@@ -11,6 +11,7 @@
         <meta name="description" content="Browse Anime Openings and Endings at Your Fingertips">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./styles.css">
+        <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -20,15 +21,15 @@
             <h1>AniPad</h1>
             <h4>By Yassir Douslimi</h4>
 
-
             <form onsubmit="return setAction(this)" method="POST">
-                <input id="search" type="search" placeholder="Search by title..." autofocus required />    
+                <input id="search" type="search" placeholder="Search by title..." required />    
               </form>
 
             <ul id="list"></ul>
 
-            <a href="#top"><button class="unhide" style="margin-bottom: 2rem;">Back to the Top</button></a>
+            <a href="#top"><button class="unhide" style="margin: 2rem 0 2rem 0;">Back to the Top</button></a>
 
         <script src="./script.js" async defer></script>
+        <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     </body>
 </html>

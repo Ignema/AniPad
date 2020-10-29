@@ -3,7 +3,7 @@
 
     if(!url){
 
-        url = "https://www.reddit.com/r/AnimeThemes.json?limit=100";
+        url = "https://www.reddit.com/r/AnimeThemes/new.json?limit=100";
 
     }
     
@@ -37,10 +37,14 @@ function displayVideos(url){
             let vid = document.createElement("video");
             vid.style.outline= "none";
             vid.style.display="none";
-            vid.className="video";
+            vid.className="video video-js vjs-default-skin";
             vid.controls=true;
 
             let src = document.createElement("source");
+            src.type="video/webm";
+
+            let container = document.createElement("div");
+            container.className="container";
             
 
             let btn = document.createElement("button");
@@ -79,7 +83,8 @@ function displayVideos(url){
             item.appendChild(bar);
 
             vid.appendChild(src);
-            item.appendChild(vid);
+            container.appendChild(vid);
+            item.appendChild(container);
 
             list.appendChild(item);
         });

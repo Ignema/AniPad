@@ -51,10 +51,14 @@ body{
 }
 
 .video{
-
-    width: 100%    !important;
+    width: 95%    !important;
     height: auto   !important;
+}
 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .play{
