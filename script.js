@@ -29,8 +29,7 @@ getVideos().then((json)=>{
 
         let vid = document.createElement("video");
         vid.style.display="none";
-        vid.height=720;
-        vid.width=1280;
+        vid.className="video";
         vid.controls=true;
 
         let src = document.createElement("source");
