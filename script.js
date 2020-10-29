@@ -1,7 +1,7 @@
 
 
  async function getVideos() {
-    let response = await fetch("https://www.reddit.com/r/AnimeThemes.json?limit=20", {
+    let response = await fetch("https://www.reddit.com/r/AnimeThemes.json?limit=100", {
         headers: {
             "User-Agent"   : "tester"
         }
@@ -33,15 +33,16 @@ getVideos().then((json)=>{
         vid.controls=true;
 
         let src = document.createElement("source");
-        src.src= video.data.url; 
+        
 
         let btn = document.createElement("button");
         btn.innerHTML = "Play";
 
         btn.addEventListener("click", ()=>{
-
             vid.style.display="block";
-
+            src.src= video.data.url;
+            vid.load();
+            vid.play();
         });
 
         let bar = document.createElement("div");
