@@ -1,4 +1,5 @@
 
+// https://www.reddit.com/r/AnimeThemes/search?q=fairy&restrict_sr=on&sort=relevance&t=all
 
  async function getVideos() {
     let response = await fetch("https://www.reddit.com/r/AnimeThemes.json?limit=100", {
@@ -28,6 +29,7 @@ getVideos().then((json)=>{
         title.innerHTML = video.data.title;
 
         let vid = document.createElement("video");
+        vid.style.outline= "none";
         vid.style.display="none";
         vid.className="video";
         vid.controls=true;
@@ -36,13 +38,29 @@ getVideos().then((json)=>{
         
 
         let btn = document.createElement("button");
+        btn.className = "play";
         btn.innerHTML = "Play";
 
         btn.addEventListener("click", ()=>{
-            vid.style.display="block";
-            src.src= video.data.url;
-            vid.load();
-            vid.play();
+            
+            if(vid.style.display=="none"){
+                vid.style.display="block";
+                btn.className="hide";
+                btn.innerHTML = "Hide";
+                if (vid.hidden==true) {
+                    vid.hidden=false;
+                }else{
+                    src.src= video.data.url;
+                    vid.load();
+                    vid.play();
+                }
+            }
+            else{
+                vid.style.display="none";
+                btn.className="unhide";
+                btn.innerHTML = "Unhide";
+                vid.hidden=true;
+            }
         });
 
         let bar = document.createElement("div");
@@ -61,6 +79,3 @@ getVideos().then((json)=>{
     });
 
 }).catch((e)=>{console.log(e)});
-
-
-

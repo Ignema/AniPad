@@ -48,7 +48,7 @@ body{
 
 }
 
-button{
+.play{
     margin-left: 1.7rem;
     background-color: darksalmon;
     border: 1px solid #2c3e50;
@@ -63,14 +63,82 @@ button{
     outline: none;
 }
 
-button:hover {
+.play:hover {
     background-color: white;
     color: darksalmon;
     border: 1px solid darksalmon;
   }
 
-button:active {
+.play:active {
     background-color: darksalmon;
     color: white;
     border: 1px solid #2c3e50;
+}
+
+.hide{
+    margin-left: 1.7rem;
+    background-color: springgreen;
+    border: 1px solid #2c3e50;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.hide:hover {
+    background-color: white;
+    color: springgreen;
+    border: 1px solid springgreen;
+  }
+
+.hide:active {
+    background-color: springgreen;
+    color: white;
+    border: 1px solid #2c3e50;
+}
+
+.unhide{
+    margin-left: 1.7rem;
+    background-color: crimson;
+    border: 1px solid #2c3e50;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.unhide:hover {
+    background-color: white;
+    color: crimson;
+    border: 1px solid crimson;
+  }
+
+.unhide:active {
+    background-color: crimson;
+    color: white;
+    border: 1px solid #2c3e50;
+}
+
+form {
+    margin: 5rem 0 2rem 0;
+    width: 70vw;
+}
+input{
+    border-radius: 10px;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    outline: none;
+    width: 100%;
+    padding: 1rem;
 }
