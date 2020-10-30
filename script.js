@@ -1,18 +1,21 @@
 
- navigator.serviceWorker.register('./sw.js', { scope: '/AniPad/' })
-        .then(function (registration)
-        {
-          console.log('Service worker registered successfully');
-        }).catch(function (e)
-        {
-          console.error('Error during service worker registration:', e);
-        });
+
+if(window.location.origin != "file://"){
+    navigator.serviceWorker.register('./sw.js', { scope: '/AniPad/' })
+    .then(function (registration)
+    {
+      console.log('Service worker registered successfully');
+    }).catch(function (e)
+    {
+      console.error('Error during service worker registration:', e);
+    });
+}
 
  async function fetchVideos(url) {
 
     if(!url){
 
-        url = "https://www.reddit.com/r/AnimeThemes/new.json?limit=100";
+        url = "https://www.reddit.com/r/AnimeThemes/top.json?limit=100&t=all";
 
     }
     
