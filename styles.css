@@ -61,6 +61,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 70%;
+}
+
+.centerer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: black;
 }
@@ -161,11 +168,19 @@ input{
 }
 
 @media screen and (max-width: 500px){
-
     img{
-
         display: none;
-
     }
+    h1{
+        margin-left: 0;
+    }
+    h4{
+        margin: 0;
+    }
+}
 
+@media screen and (max-width: 800px){
+    .container{
+        width: 100%;
+    }
 }

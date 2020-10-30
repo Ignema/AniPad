@@ -47,18 +47,24 @@ function displayVideos(url){
             title.innerHTML = video.data.title;
 
             let vid = document.createElement("video");
+            vid.className="video-js vjs-theme-forest";
             vid.style.outline= "none";
             vid.style.display="none";
-            vid.style.width="inherit";
-            vid.style.height="70vh"
-            vid.className="video-js vjs-theme-forest";
             vid.controls=true;
+            vid.autoplay=true;
+          
+            vid.setAttribute("data-setup", `{
+                "fluid": true
+            }`);
 
             let src = document.createElement("source");
             
 
             let container = document.createElement("div");
             container.className="container";
+
+            let centerer = document.createElement("div");
+            centerer.className="centerer";
             
 
             let btn = document.createElement("button");
@@ -68,7 +74,7 @@ function displayVideos(url){
             btn.addEventListener("click", ()=>{
                 
                 if(vid.style.display=="none"){
-                    container.style.display="block";
+                    container.style.display="flex";
                     vid.style.display="block";
                     btn.className="hide";
                     btn.innerHTML = "Hide";
@@ -102,7 +108,8 @@ function displayVideos(url){
 
             vid.appendChild(src);
             container.appendChild(vid);
-            item.appendChild(container);
+            centerer.appendChild(container);
+            item.appendChild(centerer);
 
             list.appendChild(item);
         });
