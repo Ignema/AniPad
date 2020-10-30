@@ -37,11 +37,13 @@ function displayVideos(url){
             let vid = document.createElement("video");
             vid.style.outline= "none";
             vid.style.display="none";
-            vid.className="video video-js vjs-default-skin";
+            vid.style.width="inherit";
+            vid.style.height="70vh"
+            vid.className="video-js vjs-theme-forest";
             vid.controls=true;
 
             let src = document.createElement("source");
-            src.type="video/webm";
+            
 
             let container = document.createElement("div");
             container.className="container";
@@ -54,6 +56,7 @@ function displayVideos(url){
             btn.addEventListener("click", ()=>{
                 
                 if(vid.style.display=="none"){
+                    container.style.display="block";
                     vid.style.display="block";
                     btn.className="hide";
                     btn.innerHTML = "Hide";
@@ -61,12 +64,15 @@ function displayVideos(url){
                         vid.hidden=false;
                     }else{
                         src.src= video.data.url;
+                        src.type="video/webm";
                         vid.load();
                         vid.play().catch((e)=>{console.log(e)});
+                        videojs(vid);
                     }
                 }
                 else{
                     vid.style.display="none";
+                    container.style.display="none"
                     btn.className="unhide";
                     btn.innerHTML = "Unhide";
                     vid.hidden=true;
