@@ -4,11 +4,11 @@
     "icons": [
         {
             "src": "img/logo.png",
-            "sizes": "680x680",
+            "sizes": "512x512",
             "type": "image/png"
         }        
     ],
-    "start_url": "/index.html",
+    "start_url": "/AniPad/",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": " #2c3e50",

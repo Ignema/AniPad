@@ -1,5 +1,12 @@
 
- navigator.serviceWorker && navigator.serviceWorker.register('sw.js').then(function (registration){});
+ navigator.serviceWorker.register('./sw.js', { scope: '/AniPad/' })
+        .then(function (registration)
+        {
+          console.log('Service worker registered successfully');
+        }).catch(function (e)
+        {
+          console.error('Error during service worker registration:', e);
+        });
 
  async function fetchVideos(url) {
 
