@@ -1,0 +1,16 @@
+{
+    "name": "AniPad",
+    "short_name": "AniPad",
+    "icons": [
+        {
+            "src": "img/logo.png",
+            "sizes": "680x680",
+            "type": "image/png"
+        }        
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": " #2c3e50",
+    "theme_color": "darksalmon"
+}

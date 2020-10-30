@@ -1,22 +1,29 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: Nunito;
+    font-family: Montserrat;
     color: white;
 }
 
-h1{
+header{
+    margin-top: 3.5rem;
+    display: flex;
+}
 
-    margin-top: 3rem;
+img{
+    width: 7rem;
+    height: 7rem;
+}
+
+h1{
+    margin-left: 2rem;
     font-size: 5rem;
     font-weight: bolder;
     color:darksalmon;
-
 }
 
 h3{
-
-    margin: 3rem 0 2rem 0;
+    margin: 1rem 0 2rem 0;
     font-size: 3rem;
     font-weight: bolder;
     color:white;
@@ -24,9 +31,8 @@ h3{
 }
 
 h4{
-
-    margin-left: 10rem;
-
+    margin-left: 20rem;
+    margin-top: -1.2rem;
 }
 
 ul{

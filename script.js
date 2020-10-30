@@ -1,4 +1,6 @@
 
+ navigator.serviceWorker && navigator.serviceWorker.register('sw.js').then(function (registration){});
+
  async function fetchVideos(url) {
 
     if(!url){
