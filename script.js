@@ -12,13 +12,10 @@ if(window.location.origin != "file://"){
 }
 
  async function fetchVideos(url) {
-
     if(!url){
-
         url = "https://www.reddit.com/r/AnimeThemes/top.json?limit=100&t=all";
-
     }
-    
+  
     let response = await fetch( url, {
         headers: {
             "User-Agent"   : "tester"
@@ -28,8 +25,27 @@ if(window.location.origin != "file://"){
     if (response.ok) { 
       return await response.json();
     } else {
-        alert("HTTP-Error: " + response.status);
-        return {"message": "Failed to fetch data"};
+        return {"HTTP-Error": response.status, "message": "Failed to fetch video  info"};
+    }
+}
+
+async function fetchCover(title){
+    let response = await fetch( "https://graphql.anilist.co", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: `{
+            Media (search: "${title}", type: ANIME) {
+            coverImage{
+                extraLarge
+            }
+              }
+            }` }),
+    });
+
+    if (response.ok) { 
+      return await response.json();
+    } else {
+        return {"HTTP-Error": response.status, "message": "Failed to fetch video covers"};
     }
 }
 
@@ -43,8 +59,10 @@ function displayVideos(url){
                 return;
             }
 
+            const animeTitle = video.data.title.substr(0, video.data.title.indexOf('('));
+
             let title = document.createElement("h2");
-            title.innerHTML = video.data.title;
+            title.innerHTML = animeTitle;
 
             let vid = document.createElement("video");
             vid.className="video-js vjs-theme-forest";
@@ -97,29 +115,81 @@ function displayVideos(url){
                 }
             });
 
-            let bar = document.createElement("div");
-            bar.className="bar";
+            fetchCover( animeTitle.substr(0, 15)).then((json)=>{
+                let bar = document.createElement("div");
+                bar.className="bar card";
 
-            let item = document.createElement("li");
+                let type = document.createElement("p");
+                type.className="type";
+                if(video.data.title.includes("OP")){
+                    type.innerHTML="OP";
+                }
+                else if(video.data.title.includes("ED")){
+                    type.innerHTML="ED";
+                }
+                else{
+                    type.innerHTML="?";
+                }
 
-            bar.appendChild(title);
-            bar.appendChild(btn);
-            item.appendChild(bar);
+                let subcard = document.createElement("div");
+                subcard.className="subcard";
 
-            vid.appendChild(src);
-            container.appendChild(vid);
-            centerer.appendChild(container);
-            item.appendChild(centerer);
+                let div = document.createElement("div");
 
-            list.appendChild(item);
-        });
+                let item = document.createElement("li");
 
-    }).catch((e)=>{console.log(e)}).finally(()=>{
-        if(!list.firstChild){
-            const msg = document.createElement("h3");
-            msg.innerHTML = "No Videos Found";
+                let thumb = document.createElement("img");
+                thumb.className="img";
+                thumb.src='./img/404.png';
+
+                if(!json["HTTP-Error"]){
+                    thumb.src=json.data.Media.coverImage.extraLarge;
+                    
+                    function myFunction(x) {
+                        if (x.matches) { // If media query matches
+                        bar.style.background = "url('" + json.data.Media.coverImage.extraLarge + "')";
+                        title.style.color= "white";
+                        title.style.textShadow= "black 1px 0px 12px";
+                        type.style.color= "white";
+                        type.style.textShadow= "black 4px 2px 6px";
+                      }else{
+                        bar.style.background = "white";
+                        title.style.color="#2c3e50";
+                        title.style.textShadow= "0px 0px black";
+                        type.style.color="crimson";
+                        type.style.textShadow= "0px 0px black";
+                      }
+                    }
+                        var x = window.matchMedia("(max-width: 500px)")
+                        myFunction(x) // Call listener function at run time
+                        x.addListener(myFunction) // Attach listener function on state changes
+                }
+                
+                
+                subcard.appendChild(title);
+                subcard.appendChild(btn);
+                bar.appendChild(type);
+                bar.appendChild(thumb);
+                bar.appendChild(subcard);
+                item.appendChild(bar);
+
+                vid.appendChild(src);
+                container.appendChild(vid);
+                centerer.appendChild(container);
+
+                div.appendChild(item);
+                div.appendChild(centerer);
+
+                list.appendChild(div);
+        }).catch((e)=>{console.log(e)});
+    });
+}).catch((e)=>{console.log(e)}).finally(()=>{
+        const msg = document.createElement("h3");
+        msg.innerHTML = "No Videos Found";
+        while(!list.firstChild){
             list.appendChild(msg);
         }
+        list.removeChild(msg);
     });
 }
 

@@ -10,9 +10,12 @@ header{
     display: flex;
 }
 
-img{
+#logo{
     width: 7rem;
-    height: 7rem;
+}
+
+.img{
+    height: 100%;
 }
 
 h1{
@@ -20,6 +23,10 @@ h1{
     font-size: 5rem;
     font-weight: bolder;
     color:darksalmon;
+}
+
+h2{
+    color: #2c3e50;
 }
 
 h3{
@@ -36,8 +43,12 @@ h4{
 }
 
 ul{
-   list-style-type: none;
-   width: 100%;
+    list-style-type: none;
+    width: 100%;
+}
+
+li{
+    /* display: table-cell; */
 }
 
 body{
@@ -50,11 +61,47 @@ body{
     overflow-x: hidden;
 }
 
+.type{
+    position: absolute;
+    bottom: 27px;
+    right: 40px;
+    color: crimson;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
 .bar{
-    margin: 6rem 2rem 3rem 2rem;
+    margin: 2rem 2rem 1rem 2rem;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    /* width: min-content;
+    overflow: hidden; */
+}
+
+.card {
+  position: relative;
+  height: 30vh;
+  overflow: hidden;
+  /* Add shadows to create the "card" effect */
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 5px rounded corners */
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.subcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 16px;
 }
 
 .container{
@@ -72,10 +119,14 @@ body{
     background-color: black;
 }
 
+button{
+    margin: 1.7rem;
+}
+
 .play{
-    margin-left: 1.7rem;
     background-color: darksalmon;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
+    border: 0;
     border-radius: 10px;
     color: white;
     padding: 15px 32px;
@@ -96,13 +147,13 @@ body{
 .play:active {
     background-color: darksalmon;
     color: white;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
 }
 
 .hide{
-    margin-left: 1.7rem;
     background-color: springgreen;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
+    border: 0;
     border-radius: 10px;
     color: white;
     padding: 15px 32px;
@@ -123,13 +174,13 @@ body{
 .hide:active {
     background-color: springgreen;
     color: white;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
 }
 
 .unhide{
-    margin-left: 1.7rem;
     background-color: crimson;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
+    border: 0;
     border-radius: 10px;
     color: white;
     padding: 15px 32px;
@@ -150,12 +201,11 @@ body{
 .unhide:active {
     background-color: crimson;
     color: white;
-    border: 1px solid #2c3e50;
+    /* border: 1px solid #2c3e50; */
 }
 
 form {
     margin: 5rem 0 2rem 0;
-    width: 70vw;
 }
 input{
     border-radius: 10px;
@@ -163,7 +213,7 @@ input{
     color: #2c3e50;
     font-size: 1.8rem;
     outline: none;
-    width: 100%;
+    width: 40vw;
     padding: 1rem;
 }
 
@@ -176,6 +226,15 @@ input{
     }
     h4{
         margin: 0;
+    }
+    .type{
+        bottom: 8px;
+    }
+    .bar{
+        justify-content: center;
+    }
+    input{
+        width: 85vw;
     }
 }
 
