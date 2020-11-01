@@ -1,6 +1,6 @@
 {
-    "name": "AniPad",
-    "short_name": "AniPad",
+    "name": "KatiPad",
+    "short_name": "KatiPad",
     "icons": [
         {
             "src": "img/logo.png",
@@ -8,9 +8,9 @@
             "type": "image/png"
         }        
     ],
-    "start_url": "/AniPad/",
+    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": " #2c3e50",
-    "theme_color": "darksalmon"
+    "theme_color": "#fd79a8"
 }

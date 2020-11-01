@@ -22,7 +22,7 @@ h1{
     margin-left: 2rem;
     font-size: 5rem;
     font-weight: bolder;
-    color:darksalmon;
+    color:#fd79a8;
 }
 
 h2{
@@ -120,7 +120,7 @@ button{
 }
 
 .play{
-    background-color: darksalmon;
+    background-color: #fd79a8;
     /* border: 1px solid #2c3e50; */
     border: 0;
     border-radius: 10px;
@@ -136,12 +136,12 @@ button{
 
 .play:hover {
     background-color: white;
-    color: darksalmon;
-    border: 1px solid darksalmon;
+    color: #fd79a8;
+    border: 1px solid #fd79a8;
   }
 
 .play:active {
-    background-color: darksalmon;
+    background-color: #fd79a8;
     color: white;
     /* border: 1px solid #2c3e50; */
 }
