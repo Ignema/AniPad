@@ -47,10 +47,6 @@ ul{
     width: 100%;
 }
 
-li{
-    /* display: table-cell; */
-}
-
 body{
     display: flex;
     flex-direction: column;

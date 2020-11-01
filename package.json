@@ -1,0 +1,27 @@
+{
+  "name": "katipad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ignema/AniPad.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ignema/AniPad/issues"
+  },
+  "homepage": "https://github.com/Ignema/AniPad#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "scrape-youtube": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
