@@ -6,11 +6,11 @@
             "src": "img/logo.png",
             "sizes": "512x512",
             "type": "image/png"
-        }        
+        }
     ],
     "start_url": "/AniPad/",
     "display": "standalone",
     "orientation": "portrait",
-    "background_color": " #2c3e50",
+    "background_color": "#2c3e50",
     "theme_color": "darksalmon"
 }
